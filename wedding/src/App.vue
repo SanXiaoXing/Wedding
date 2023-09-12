@@ -30,3 +30,15 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 </style>
+
+
+<!-- 增加樱花飘落效果 -->
+<script>
+export default {
+  mounted() {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/static/js/sakura-less.js';
+      document.body.appendChild(script);
+  }
+}
+</script>
