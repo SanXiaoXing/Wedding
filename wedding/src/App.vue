@@ -1,11 +1,15 @@
 <template>
   <div id="app">
-    <Datetime></Datetime>
     <nav>
       <router-link to="/">纪念相册</router-link> |
-      <router-link to="/about">纪念日期</router-link>
+      <router-link to="/Wedding_anniversary">纪念日期</router-link>
     </nav>
-    <router-view/>
+    <div>
+      <h1>
+        <Datetime></Datetime>
+      </h1>
+    </div>
+    <router-view class="page"/>
     <div class="music-container" @click="toggleMusic">
       <img :class="{'music-icon': true, 'rotate': isMusicPlaying}" src="../src/assets/music.svg" alt="音乐播放">
     </div>
@@ -22,15 +26,33 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+   /* 新增样式 */ 
+  position: relative; 
+  min-height: 100vh;
+}
+.page {
+  background-color: #ffffff;
+  opacity: 1;
+  background-image:  linear-gradient(#ffdbdb 1.2000000000000002px, transparent 1.2000000000000002px), linear-gradient(to right, #ffdbdb 1.2000000000000002px, #ffffff 1.2000000000000002px);
+  background-size: 24px 24px;
 }
 
 nav {
+  position: relative;
   padding: 30px;
+  background-color: #ffffff;
+  opacity: 1;
+  background-image:  linear-gradient(#ffdbdb 1.2000000000000002px, transparent 1.2000000000000002px), linear-gradient(to right, #ffdbdb 1.2000000000000002px, #ffffff 1.2000000000000002px);
+  background-size: 24px 24px;
 }
 
 nav a {
   font-weight: bold;
   color: #2c3e50;
+}
+
+nav a:hover {
+  background-color: #eee;
 }
 
 nav a.router-link-exact-active {
@@ -57,11 +79,10 @@ nav a.router-link-exact-active {
 
 
 <script>
-import Datetime from '@/components/Date.vue';
-  
+import Datetime from './components/Date.vue';
 
 export default {
-  components: {
+  components :{
     Datetime
   },
   data() {

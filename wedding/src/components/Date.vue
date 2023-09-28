@@ -1,24 +1,33 @@
 <template>
     <div class="anniversary-container">
-      <p>今天是 {{ currentDate }}</p>
-      <p>结婚纪念 {{ years }} 周年 ，第 {{ days }} 天.</p>
+      <TypedText :texts="['今天的日期是 ' + currentDate ,'同时也是💍结婚纪念 ' + years + ' 周年💍, ❤第 ' + days + ' 天 ❤']" :typingSpeed="200"></TypedText>
     </div>
   </template>
   
   <style scoped>
   .anniversary-container {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    /* background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
-    border-radius: 20px; /* 设置圆角 */
-    padding: 20px;
+    border-radius: 20px; 设置圆角 */
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 宋体;
+    color: red;
   }
   </style>
   
   <script>
+  import TypedText from '@/components/typedText.vue'
+
   export default {
+    components: {
+    TypedText
+  },
     name: 'AnniversaryDate',
     data() {
       return {

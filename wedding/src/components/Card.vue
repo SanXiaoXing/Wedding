@@ -1,6 +1,6 @@
 <template>
   <div class="card" @mouseenter="zoomInCard" @mouseleave="zoomOutCard" @click="toggleCardFlip" :style="{ transform: cardTransform }">
-    <div class="card-inner" :class="{ 'is-flipped': flipped }">
+    <div class="card-inner" :class="{ 'is-flipped': flipped, 'flip-scale-up-ver': isFlippedAndHovered }">
       <div class="card-front">
         <img :src="frontImage" :alt="frontImageAlt" @click="triggerSinkEffect">
       </div>
@@ -35,7 +35,8 @@ export default {
   data() {
     return {
       flipped: false,
-      cardTransform: 'scale(1)' // Initial scale
+      cardTransform: 'scale(1)', // Initial scale
+      isFlippedAndHovered: false // Track if the card is flipped and hovered
     };
   },
   methods: {
@@ -44,9 +45,11 @@ export default {
     },
     zoomInCard() {
       this.cardTransform = 'scale(1.05)'; // Scale up the card on mouseenter
+      this.isFlippedAndHovered = this.flipped; // Check if the card is flipped and hovered
     },
     zoomOutCard() {
       this.cardTransform = 'scale(1)'; // Reset the card scale on mouseleave
+      this.isFlippedAndHovered = false; // Reset the flipped and hovered state
     },
     triggerSinkEffect(event) {
       const imgElement = event.target;
@@ -119,5 +122,10 @@ export default {
   background-color: transparent;
   transform: rotateY(180deg);
   border-radius: 20px;
+}
+
+.flip-scale-up-ver {
+  -webkit-animation: flip-scale-up-ver 0.5s linear both;
+  animation: flip-scale-up-ver 0.5s linear both;
 }
 </style>

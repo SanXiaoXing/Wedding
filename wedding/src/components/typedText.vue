@@ -31,6 +31,7 @@
   
   <script>
   export default {
+    name: 'typedText',
     props: {
       texts: {
         type: Array,
